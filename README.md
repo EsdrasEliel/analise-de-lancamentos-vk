@@ -1,6 +1,8 @@
 # analise-de-lancamentos-vk
 Relatório visual e interativo de análise de lançamentos digitais da VK, com insights estratégicos, dados de campanhas e dashboards integrados, desenvolvido com HTML, CSS, Power BI e R.
 
+> ⚠️ Este projeto foi desenvolvido como parte de um case proposto em um processo seletivo. Nenhuma informação confidencial ou dados reais foram utilizados. O conteúdo apresentado aqui é apenas para fins educacionais e demonstrativos.
+
 
 📊 **Dashboard interativo:** [Ver Power BI integrado](https://app.powerbi.com/view?r=eyJrIjoiNjVjZDUxNDgtYTMyNy00ZDVjLWEwNmQtMTYxYjFiNWNkNWFlIiwidCI6IjhlNTRmODJjLTBmOWQtNGE2Ny1iNTZlLTk5M2I3Y2ExOWVmMiJ9)
 
