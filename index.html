@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análise de Lançamentos Digitais - VK</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            background-color: #1f3864;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px;
+        }
+        h1, h2, h3 {
+            color: #1f3864;
+        }
+        .header h1 {
+            color: white;
+        }
+        .card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .highlight {
+            background-color: #e6f7ff;
+            padding: 15px;
+            border-left: 4px solid #1f3864;
+            margin: 15px 0;
+        }
+        .warning {
+            background-color: #fff7e6;
+            padding: 15px;
+            border-left: 4px solid #e6a700;
+            margin: 15px 0;
+        }
+        .success {
+            background-color: #f6ffed;
+            padding: 15px;
+            border-left: 4px solid #52c41a;
+            margin: 15px 0;
+        }
+        .data-box {
+            display: inline-block;
+            background-color: #1f3864;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .data-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .metric-card {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f3864;
+            margin: 10px 0;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #eee;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: #1f3864;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 0 5px 5px 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .tab-content.active {
+            display: block;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        .conclusion {
+            background-color: #e6f7ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .dashboard {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 8px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .action-plan {
+            background-color: #f6ffed;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        .action-item {
+            background-color: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .priority-high {
+            border-left: 4px solid #ff4d4f;
+        }
+        .priority-medium {
+            border-left: 4px solid #faad14;
+        }
+        .priority-low {
+            border-left: 4px solid #52c41a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Análise de Lançamentos Digitais</h1>
+        <p>Relatório de Performance - VK Digital - Março 2025</p>
+        <div class="logo">VK</div>
+    </div>
+
+    <div class="tabs">
+        <button class="tab active" onclick="openTab(event, 'director')">Para Diretores</button>
+        <button class="tab" onclick="openTab(event, 'marketing-manager')">Para Gestores de Marketing</button>
+    </div>
+
+    <div id="director" class="tab-content active">
+        <div class="card">
+            <h2>Resumo Executivo - Lançamentos Digitais VK</h2>
+            <p>Este relatório apresenta uma análise clara dos resultados dos diversos lançamentos digitais da VK, traduzindo dados técnicos em insights estratégicos para tomadas de decisão.</p>
+            
+            <div class="highlight">
+                <h3>Panorama Geral:</h3>
+                <div class="data-row">
+                    <div class="metric-card">
+                        <p>Total de Leads Gerados</p>
+                        <div class="metric-value">9.995</div>
+                        <p>Pessoas interessadas nos produtos</p>
+                    </div>
+                    <div class="metric-card">
+                        <p>Vendas Realizadas</p>
+                        <div class="metric-value">71</div>
+                        <p>Conversões em pagamentos</p>
+                    </div>
+                    <div class="metric-card">
+                        <p>Taxa de Conversão</p>
+                        <div class="metric-value">0,71%</div>
+                        <p>Leads que viraram clientes</p>
+                    </div>
+                    <div class="metric-card">
+                        <p>Investimento Total</p>
+                        <div class="metric-value">R$ 18.050,00</div>
+                        <p>Em anúncios e campanhas</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>A História dos Nossos Lançamentos</h3>
+            <p>Na VK, cada lançamento digital é uma oportunidade única de conexão com o público. Nossos dados revelam histórias importantes:</p>
+            
+            <div class="success">
+                <h4>Anúncios de Maior Sucesso:</h4>
+                <p><strong>Anúncio AD17</strong> - Este foi nosso lançamento mais eficiente! Conseguiu atrair 3.628 pessoas interessadas, com um custo de apenas R$ 2,02 por lead. É o equivalente a encher 36 salas de aula com potenciais clientes, pelo preço de um café por pessoa.</p>
+                <p><strong>Anúncio AD19</strong> - Nosso segundo melhor performer conquistou 1.719 potenciais clientes, com custo ainda menor: R$ 1,97 por lead. Isso demonstra que estamos refinando nossa capacidade de atrair o público certo.</p>
+            </div>
+            
+            <div class="warning">
+                <h4>Desafio Crítico:</h4>
+                <p>Apesar de gerarmos quase 10.000 leads, apenas 71 se converteram em vendas (0,71%). Isso significa que estamos atraindo muitas pessoas, mas precisamos melhorar significativamente nossa capacidade de convencê-las a comprar.</p>
+            </div>
+            
+            <h3>Canais que Impulsionam Nossos Lançamentos</h3>
+            <p>Cada canal conta uma parte importante da história dos nossos lançamentos:</p>
+            
+            <div class="highlight">
+                <h4>Fontes de Tráfego:</h4>
+                <p>O <strong>Facebook</strong> é nossa principal fonte de leads, trazendo 84% de todos os interessados (8.400 pessoas). No entanto, nossos canais de <strong>vídeo</strong> são os que realmente vendem:</p>
+                <ul>
+                    <li><strong>YouTube:</strong> 17,8% de conversão - De longe nossa plataforma mais eficiente</li>
+                    <li><strong>Shorts:</strong> 14,2% de conversão - Conteúdos curtos têm grande impacto</li>
+                </ul>
+                <p>Isso revela que enquanto o Facebook nos traz volume, são os vídeos que realmente convencem as pessoas a comprar.</p>
+            </div>
+            
+            <h3>Nossa Audiência</h3>
+            <p>Com base em 1.304 respostas à nossa pesquisa, conhecemos melhor quem são as pessoas interessadas nos nossos lançamentos:</p>
+            
+            <div class="data-row">
+                <div class="metric-card">
+                    <p>Faixa Etária Principal</p>
+                    <div class="metric-value">36-55 anos</div>
+                    <p>Representando 63% do público</p>
+                </div>
+                <div class="metric-card">
+                    <p>Renda Predominante</p>
+                    <div class="metric-value">Até R$ 1.500</div>
+                    <p>Representa 53,24% do público</p>
+                </div>
+                <div class="metric-card">
+                    <p>Conhecimento da Marca</p>
+                    <div class="metric-value">Menos de 1 mês</div>
+                    <p>Audiência predominantemente nova</p>
+                </div>
+            </div>
+            
+            <div class="action-plan">
+                <h3>Plano de Ação Imediato</h3>
+                
+                <div class="action-item priority-high">
+                    <h4>1. Reformular Estratégia de Conversão</h4>
+                    <p><strong>Problema:</strong> Taxa de conversão de 0,71% é muito baixa para o setor de lançamentos digitais.</p>
+                    <p><strong>Ação:</strong> Desenvolver uma sequência de e-mails e conteúdos específicos para nutrir leads após a captura, com foco no formato vídeo.</p>
+                    <p><strong>Resultado esperado:</strong> Aumento da taxa de conversão para no mínimo 2%, o que triplicaria as vendas atuais.</p>
+                </div>
+                
+                <div class="action-item priority-high">
+                    <h4>2. Potencializar Vídeos em Todos os Lançamentos</h4>
+                    <p><strong>Problema:</strong> YouTube e Shorts têm alto poder de conversão, mas possivelmente baixo volume.</p>
+                    <p><strong>Ação:</strong> Criar mais conteúdo em vídeo para cada lançamento e direcionar parte do budget de Facebook para impulsionamento no YouTube.</p>
+                    <p><strong>Resultado esperado:</strong> Manutenção do volume de leads com aumento na qualidade e interesse.</p>
+                </div>
+                
+                <div class="action-item priority-medium">
+                    <h4>3. Reformular Ofertas para Perfil Econômico</h4>
+                    <p><strong>Problema:</strong> Maior parte do público tem renda até R$ 1.500, o que pode limitar o poder de compra.</p>
+                    <p><strong>Ação:</strong> Desenvolver opções de parcelamento e modelos de oferta com entrada mais acessível.</p>
+                    <p><strong>Resultado esperado:</strong> Aumento da conversão no público de menor renda sem sacrificar a receita total.</p>
+                </div>
+            </div>
+            
+            <div class="conclusion">
+                <h3>Conclusão para Diretoria</h3>
+                <p>Nossos lançamentos digitais estão gerando volume expressivo de interessados, mas enfrentamos um gargalo crítico na conversão. A boa notícia é que já identificamos onde estão nossas maiores oportunidades:</p>
+                <ol>
+                    <li>Precisamos focar em conteúdo em vídeo, que tem taxas de conversão muito superiores aos demais canais</li>
+                    <li>Devemos aperfeiçoar nossa jornada pós-captura de lead, especialmente do Facebook</li>
+                    <li>É necessário adequar nossas ofertas ao perfil econômico do público predominante</li>
+                </ol>
+                <p>Com ajustes estratégicos, temos potencial para triplicar nossas vendas sem aumentar significativamente o investimento em aquisição.</p>
+            </div>
+            
+            <h3>Dashboard Interativo</h3>
+            <p>Para explorar os dados em mais detalhes, utilize o dashboard interativo abaixo:</p>
+            <iframe class="dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiNjVjZDUxNDgtYTMyNy00ZDVjLWEwNmQtMTYxYjFiNWNkNWFlIiwidCI6IjhlNTRmODJjLTBmOWQtNGE2Ny1iNTZlLTk5M2I3Y2ExOWVmMiJ9"></iframe>
+        </div>
+    </div>
+
+    <div id="marketing-manager" class="tab-content">
+        <div class="card">
+            <h2>Análise Técnica de Performance dos Lançamentos - VK</h2>
+            <p>Esta análise técnica detalha o desempenho de múltiplos lançamentos digitais da VK, com foco na otimização de métricas e estratégias para próximos ciclos.</p>
+            
+            <div class="section">
+                <h3>KPIs Consolidados</h3>
+                <div class="data-row">
+                    <div class="metric-card">
+                        <p>Leads Gerados</p>
+                        <div class="metric-value">9.995</div>
+                        <p>Across all launches</p>
+                    </div>
+                    <div class="metric-card">
+                        <p>Conversões</p>
+                        <div class="metric-value">71</div>
+                        <p>Taxa: 0,71%</p>
+                    </div>
+                    <div class="metric-card">
+                        <p>CPL Médio</p>
+                        <div class="metric-value">R$ 1,81</div>
+                        <p>Benchmark: R$ 2,50</p>
+                    </div>
+                    <div class="metric-card">
+                        <p>Investimento</p>
+                        <div class="metric-value">R$ 18,05K</div>
+                        <p>ROAS estimado: 0,39x</p>
+                    </div>
+                </div>
+                
+                <div class="data-row">
+                    <div class="metric-card">
+                        <p>CPC Médio</p>
+                        <div class="metric-value">R$ 409,90</div>
+                    </div>
+                    <div class="metric-card">
+                        <p>CTR Médio</p>
+                        <div class="metric-value">609,26</div>
+                    </div>
+                    <div class="metric-card">
+                        <p>CPM Médio</p>
+                        <div class="metric-value">R$ 5,42K</div>
+                    </div>
+                </div>
+                
+                <div class="warning">
+                    <h4>Análise de Conversão:</h4>
+                    <p>A taxa de conversão de 0,71% está significativamente abaixo do benchmark para o setor de lançamentos digitais, que tipicamente varia entre 2-5%. Isso indica problemas nos funis de conversão pós-captura de lead.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3>Performance Detalhada por Campanha</h3>
+                <table>
+                    <tr>
+                        <th>Lançamento</th>
+                        <th>Leads</th>
+                        <th>Investimento</th>
+                        <th>CPM</th>
+                        <th>CPC</th>
+                        <th>CPL</th>
+                        <th>Eficiência</th>
+                    </tr>
+                    <tr>
+                        <td>AD17</td>
+                        <td>3.628</td>
+                        <td>R$ 7.320,00</td>
+                        <td>R$ 427,81</td>
+                        <td>R$ 37,28</td>
+                        <td>R$ 2,02</td>
+                        <td>111% acima da média</td>
+                    </tr>
+                    <tr>
+                        <td>AD19</td>
+                        <td>1.719</td>
+                        <td>R$ 3.390,00</td>
+                        <td>R$ 276,74</td>
+                        <td>R$ 23,50</td>
+                        <td>R$ 1,97</td>
+                        <td>109% acima da média</td>
+                    </tr>
+                    <tr>
+                        <td>AD35</td>
+                        <td>369</td>
+                        <td>R$ 1.090,00</td>
+                        <td>R$ 258,15</td>
+                        <td>R$ 14,23</td>
+                        <td>R$ 2,95</td>
+                        <td>63% abaixo da média</td>
+                    </tr>
+                </table>
+                
+                <div class="highlight">
+                    <h4>Análise de Eficiência vs. Escala:</h4>
+                    <p>O gráfico de dispersão (Custo por Conversão vs. Valor Gasto) revela uma correlação interessante: as campanhas AD17 e AD19 demonstram que é possível manter a eficiência mesmo com escala. Isso contradiz o padrão comum onde escalabilidade tende a reduzir a eficiência de custo.</p>
+                    <p>Tecnicamente, os pontos à direita do gráfico (maior investimento) mantêm CPL baixo, indicando que as campanhas de maior sucesso possuem mecanismos de otimização eficazes que não se degradam com volume.</p>
+                </div>
+                
+                            <div class="section">
+                <h3>Análise de Funil por Canal</h3>
+                <h4>Distribuição de Leads por Origem:</h4>
+                <ul>
+                    <li><strong>Facebook Ads:</strong> 8.400 leads (84,06%) - Dominante em volume</li>
+                    <li><strong>Manychat:</strong> 600 leads (6,0%) - Chatbot e automação</li>
+                    <li><strong>BIO + Google Ads:</strong> 600 leads combinados (6,0%)</li>
+                    <li><strong>Outros canais:</strong> 395 leads (3,95%)</li>
+                </ul>
+                
+                <h4>Performance de Conversão por Canal:</h4>
+                <ul>
+                    <li><strong>YouTube:</strong> 17,8% (índice de conversão superior)</li>
+                    <li><strong>Shorts:</strong> 14,2% (segundo melhor conversor)</li>
+                    <li><strong>Direct:</strong> 5,5% (tráfego direto)</li>
+                    <li><strong>Outros canais:</strong> Todos abaixo de 3%</li>
+                    <li><strong>Facebook Ads:</strong> Próximo a 0% (crítico)</li>
+                </ul>
+                
+                <div class="warning">
+                    <h4>Anomalia Crítica no Funil:</h4>
+                    <p>Existe uma inversão problemática no funil de marketing da VK: o canal que gera 84% dos leads (Facebook) tem a menor taxa de conversão, enquanto os canais com melhor conversão (YouTube e Shorts) representam volume muito menor de leads.</p>
+                    <p>Diagnóstico técnico: O Facebook está gerando leads de baixa qualidade ou a jornada pós-captura para esses leads está falha.</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h3>Segmentação de Audiência</h3>
+                <p>Base: 1.304 respostas à pesquisa</p>
+                
+                <h4>Distribuição Demográfica:</h4>
+                <ul>
+                    <li>41-45 anos: 256 respostas (19,6%)</li>
+                    <li>46-50 anos: 221 respostas (16,9%)</li>
+                    <li>36-40 anos: 210 respostas (16,1%)</li>
+                    <li>51-55 anos: 170 respostas (13,0%)</li>
+                    <li>31-35 anos: 161 respostas (12,3%)</li>
+                </ul>
+                <p>Concentração: 65,6% da audiência está na faixa 36-55 anos</p>
+                
+                <h4>Segmentação por Renda:</h4>
+                <ul>
+                    <li>Até R$ 1.500: 53,24% (majoritário)</li>
+                    <li>R$ 1.500-3.000: 26,16%</li>
+                    <li>R$ 3.000-5.000: 12,74%</li>
+                    <li>Acima de R$ 5.000: 7,86%</li>
+                </ul>
+                
+                <h4>Maturidade na Jornada de Cliente:</h4>
+                <p>Gráfico "Tempo que Conhece o Expert" revela base predominantemente nova:</p>
+                <ul>
+                    <li>Menos de 1 mês: 798 respostas (61,2%)</li>
+                    <li>Mais de 2 anos: Aproximadamente 150 respostas (11,5%)</li>
+                </ul>
+                <p>Análise técnica: A curva acentuada indica alto influxo de leads novos com baixa retenção ao longo do tempo - característico de estratégias de aquisição agressivas sem nurturing adequado.</p>
+            </div>
+            
+            <div class="action-plan">
+                <h3>Recomendações Técnicas</h3>
+                
+                <div class="action-item priority-high">
+                    <h4>1. Reengenharia do Funil de Conversão</h4>
+                    <p><strong>Diagnóstico:</strong> Taxa de conversão geral de 0,71% indica falha estrutural no funil de vendas.</p>
+                    <p><strong>Ação Técnica:</strong> Implementar segmentação de leads por interesse e comportamento, com fluxos de nurturing distintos:</p>
+                    <ul>
+                        <li>Desenvolver sequência de 7 emails para leads do Facebook com conteúdo em vídeo incorporado</li>
+                        <li>Implementar remarketing segmentado por nível de engajamento</li>
+                        <li>Criar chatbot no WhatsApp para qualificação ativa de leads</li>
+                    </ul>
+                    <p><strong>KPI:</strong> Aumento de conversão para mínimo de 2% em 45 dias.</p>
+                </div>
+                
+                <div class="action-item priority-high">
+                    <h4>2. Realocação Estratégica de Budget</h4>
+                    <p><strong>Diagnóstico:</strong> Desalinhamento entre canais de aquisição (Facebook) e canais de conversão (YouTube/Shorts).</p>
+                    <p><strong>Ação Técnica:</strong></p>
+                    <ul>
+                        <li>Manter 60% do budget no Facebook para aquisição de leads</li>
+                        <li>Realocar 25% do budget para YouTube ads, priorizando formatos in-stream</li>
+                        <li>Destinar 15% para produção e impulsionamento de Shorts</li>
+                        <li>Desenvolver retargeting cross-channel: captar no Facebook, converter no YouTube</li>
+                    </ul>
+                    <p><strong>KPI:</strong> Aumento de 35% no tráfego de YouTube/Shorts mantendo taxas de conversão acima de 12%.</p>
+                </div>
+                
+                <div class="action-item priority-medium">
+                    <h4>3. Otimização de Campanhas AD17 e AD19</h4>
+                    <p><strong>Diagnóstico:</strong> Estas campanhas demonstraram eficiência superior (109-111% acima da média).</p>
+                    <p><strong>Ação Técnica:</strong></p>
+                    <ul>
+                        <li>Replicar elementos-chave (cópia, estrutura de página, segmentação) para outras campanhas</li>
+                        <li>A/B testing de novos headlines mantendo a estrutura de oferta</li>
+                        <li>Escalar verticalmente: aumentar orçamento em 20% por semana monitorando CPL</li>
+                        <li>Escalar horizontalmente: expandir para audiências semelhantes (lookalikes)</li>
+                    </ul>
+                    <p><strong>KPI:</strong> Manter CPL abaixo de R$ 2,20 com aumento de 50% no volume.</p>
+                </div>
+                
+                <div class="action-item priority-medium">
+                    <h4>4. Desenvolvimento de Product Fit para Perfil Econômico</h4>
+                    <p><strong>Diagnóstico:</strong> 53,24% da audiência tem renda até R$ 1.500, potencialmente limitando conversões.</p>
+                    <p><strong>Ação Técnica:</strong></p>
+                    <ul>
+                        <li>Implementar teste A/B com ofertas adaptadas ao poder aquisitivo:</li>
+                        <li>Variante A: Parcelamento estendido (até 12x) com desconto progressivo para pagamentos à vista</li>
+                        <li>Variante B: Modelo freemium com entrada gratuita e upsells sequenciais de menor valor</li>
+                        <li>Segmentar ofertas por faixa de renda utilizando dados comportamentais</li>
+                    </ul>
+                    <p><strong>KPI:</strong> Aumento de conversão em 40% no segmento de renda até R$ 1.500.</p>
+                </div>
+                
+                <div class="action-item priority-low">
+                    <h4>5. Estratégia de Retenção e Recorrência</h4>
+                    <p><strong>Diagnóstico:</strong> 61,2% da base conhece a marca há menos de 1 mês, indicando ciclo de vida curto.</p>
+                    <p><strong>Ação Técnica:</strong></p>
+                    <ul>
+                        <li>Implementar programa de onboarding estruturado para novos leads/clientes</li>
+                        <li>Desenvolver conteúdo exclusivo para segmentos de mais de 2 meses</li>
+                     </ol>
+            </div>
+        </div>
+
+<h3>Dashboard Interativo</h3>
+            <p>Para explorar os dados em mais detalhes, utilize o dashboard interativo abaixo:</p>
+            <iframe class="dashboard" src="https://app.powerbi.com/view?r=eyJrIjoiNjVjZDUxNDgtYTMyNy00ZDVjLWEwNmQtMTYxYjFiNWNkNWFlIiwidCI6IjhlNTRmODJjLTBmOWQtNGE2Ny1iNTZlLTk5M2I3Y2ExOWVmMiJ9"></iframe>
+        </div>
+    </div>
+
+    </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabContent, tabLinks;
+            
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].className = tabContent[i].className.replace(" active", "");
+            }
+            
+            tabLinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).className += " active";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+<div class="section" style="margin-top: 40px;">
+    <div class="card">
+        <h2>Ferramentas Utilizadas na Análise</h2>
+        <p>Este relatório foi desenvolvido utilizando um conjunto de ferramentas avançadas para garantir análises precisas e uma apresentação profissional:</p>
+        
+        <div class="data-row">
+            <div class="metric-card">
+                <p>Power BI</p>
+                <div class="metric-value"><i class="fa fa-chart-bar"></i></div>
+                <p>Visualização de dados e dashboards interativos</p>
+            </div>
+            <div class="metric-card">
+                <p>RStudio</p>
+                <div class="metric-value"><i class="fa fa-code"></i></div>
+                <p>Análise estatística e processamento avançado de dados</p>
+            </div>
+            <div class="metric-card">
+                <p>HTML/CSS</p>
+                <div class="metric-value"><i class="fa fa-file-code"></i></div>
+                <p>Estruturação e estilização do relatório web</p>
+            </div>
+            <div class="metric-card">
+                <p>ChatGPT</p>
+                <div class="metric-value"><i class="fa fa-robot"></i></div>
+                <p>Revisão e aprimoramento textual do relatório</p>
+            </div>
+        </div>
+        
+        <div class="highlight">
+            <h4>Nossa Metodologia:</h4>
+            <p>O fluxo de trabalho desta análise envolveu múltiplas etapas:</p>
+            <ol>
+                <li>Coleta e limpeza de dados através de scripts em R</li>
+                <li>Análise estatística e identificação de padrões via RStudio</li>
+                <li>Criação de visualizações interativas no Power BI</li>
+                <li>Estruturação do relatório em HTML/CSS para apresentação web</li>
+                <li>Revisão e refinamento textual com auxílio de IA</li>
+            </ol>
+            <p>Esta abordagem multidisciplinar nos permitiu transformar dados brutos em insights acionáveis e recomendações estratégicas.</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>   
+
